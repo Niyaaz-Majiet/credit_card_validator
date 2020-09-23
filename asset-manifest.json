@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/credit_card_validator/static/css/main.8e228bd2.chunk.css",
+    "main.js": "/credit_card_validator/static/js/main.59ed0742.chunk.js",
+    "main.js.map": "/credit_card_validator/static/js/main.59ed0742.chunk.js.map",
+    "runtime-main.js": "/credit_card_validator/static/js/runtime-main.508a144b.js",
+    "runtime-main.js.map": "/credit_card_validator/static/js/runtime-main.508a144b.js.map",
+    "static/js/2.b84c487e.chunk.js": "/credit_card_validator/static/js/2.b84c487e.chunk.js",
+    "static/js/2.b84c487e.chunk.js.map": "/credit_card_validator/static/js/2.b84c487e.chunk.js.map",
+    "index.html": "/credit_card_validator/index.html",
+    "precache-manifest.282c8da6490761e4d98e3299510a51cc.js": "/credit_card_validator/precache-manifest.282c8da6490761e4d98e3299510a51cc.js",
+    "service-worker.js": "/credit_card_validator/service-worker.js",
+    "static/css/main.8e228bd2.chunk.css.map": "/credit_card_validator/static/css/main.8e228bd2.chunk.css.map",
+    "static/js/2.b84c487e.chunk.js.LICENSE.txt": "/credit_card_validator/static/js/2.b84c487e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.508a144b.js",
+    "static/js/2.b84c487e.chunk.js",
+    "static/css/main.8e228bd2.chunk.css",
+    "static/js/main.59ed0742.chunk.js"
+  ]
+}
