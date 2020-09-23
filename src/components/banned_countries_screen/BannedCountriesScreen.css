@@ -1,0 +1,54 @@
+#no_banned_accounts_display {
+  margin: auto;
+}
+
+#list_wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 26vh;
+  overflow: scroll;
+}
+
+#list_wrapper span {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 10px;
+  font-size: 18px;
+  border-bottom: 1px solid #999999;
+  width: 80%;
+  text-align: center;
+}
+
+#container {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+#banned_form {
+  width: 20%;
+  margin-top: 0;
+  margin-bottom: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#banned_form button {
+  padding: 7px;
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 1258px) {
+  #banned_form {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #banned_form {
+    width: 60%;
+  }
+}

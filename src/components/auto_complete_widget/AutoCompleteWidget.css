@@ -1,0 +1,38 @@
+#container {
+  width: 100%;
+}
+
+input {
+  border: none;
+  background: #f9f9f9;
+  border-bottom: 1px solid #999999;
+  padding: 15px;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+input:focus {
+  outline: none;
+}
+
+#suggestions {
+  height: 200px;
+  position: absolute;
+  top: 145px;
+  overflow-y: scroll;
+  background: white;
+  list-style: none;
+  padding-inline-start: 0;
+  box-shadow: 1px 1px 4px 0px #6a6969;
+}
+
+.list_items {
+  padding: 10px;
+  margin-top: 3px;
+}
+
+@media only screen and (max-width: 373px) {
+  #suggestions {
+    top: 184px;
+  }
+}

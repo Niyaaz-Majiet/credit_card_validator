@@ -1,0 +1,46 @@
+h1 {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+#container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#input_form {
+  width: 20%;
+  margin: auto;
+}
+
+#input_form button {
+  padding: 7px;
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+#input_form input {
+  border: none;
+  background: #f9f9f9;
+  border-bottom: 1px solid #999999;
+  padding: 15px;
+  font-size: 18px;
+}
+
+#input_form input:focus {
+  outline: none;
+}
+
+@media only screen and (max-width: 1258px) {
+  #input_form {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #input_form {
+    width: 60%;
+  }
+}

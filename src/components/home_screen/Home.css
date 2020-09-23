@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+#action_buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: fit-content;
+  padding: 15px;
+}
+
+.btn {
+  flex: 1;
+  width: 100%;
+  margin-right: 15px;
+}
+
+@media only screen and (max-width: 380px) {
+  #action_buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    flex: 1;
+    width: 100%;
+    margin-right: 0;
+    margin-top: 15px;
+  }
+}
