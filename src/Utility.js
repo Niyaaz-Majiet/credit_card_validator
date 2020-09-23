@@ -3,7 +3,6 @@ var lookup = require("binlookup")();
 
 export const proccessRawCountriesArray = (rawCountriesArray) => {
   let proccesedArray = [];
-  console.log(rawCountriesArray);
 
   [...rawCountriesArray].forEach((country) => {
     proccesedArray.push({
@@ -26,7 +25,7 @@ export const retrieveAccountAndCardInfo = (creditCardNumber) => {
   return new Promise((resolve) => {
     lookup(creditCardNumber.substring(0, 8), (err, data) => {
       if (err) {
-        resolve({ hasError: false });
+        resolve(null);
       }
 
       resolve(data);

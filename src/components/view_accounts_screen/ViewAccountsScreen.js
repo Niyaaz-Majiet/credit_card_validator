@@ -5,7 +5,6 @@ const ViewAccountsScreen = () => {
   const [savedAccounts, updateSavedAccounts] = useState(
     JSON.parse(sessionStorage.getItem("saved_accounts")) || []
   );
-  console.log(savedAccounts);
 
   useEffect(() => {
     sessionStorage.setItem("saved_accounts", JSON.stringify(savedAccounts));

@@ -11,28 +11,31 @@ const AddCreditCardScreen = () => {
   const onClick = async () => {
     let isValidData = validateAccountAndReturnData(accountNumber);
     let retrivedCardInfo = await retrieveAccountAndCardInfo(accountNumber);
-    console.log(retrivedCardInfo);
-    if (accountNumber.length < 13) {
-      alert("Invalid Credit Card Number");
-    } else {
-      if (isValidData.isValid) {
-        let isDuplicate = checkIfAccountExists(accountNumber);
-        if (isDuplicate) {
-          alert("Account Has Already Been Added");
-        } else {
-          let isSelectedBanned = checkIfSelectedBanned(
-            retrivedCardInfo.country.alpha2
-          );
-
-          if (isSelectedBanned) {
-            alert("Card Belongs To a Banned Country");
-          } else {
-            addCreditCard(retrivedCardInfo);
-          }
-        }
+    if (retrivedCardInfo) {
+      if (accountNumber.length < 13) {
+        alert("Invalid Credit Card Number");
       } else {
-        alert("Account Number Not Valid");
+        if (isValidData.isValid) {
+          let isDuplicate = checkIfAccountExists(accountNumber);
+          if (isDuplicate) {
+            alert("Account Has Already Been Added");
+          } else {
+            let isSelectedBanned = checkIfSelectedBanned(
+              retrivedCardInfo.country.alpha2
+            );
+
+            if (isSelectedBanned) {
+              alert("Card Belongs To a Banned Country");
+            } else {
+              addCreditCard(retrivedCardInfo);
+            }
+          }
+        } else {
+          alert("Account Number Not Valid");
+        }
       }
+    } else {
+      alert("Could Not Retrieve Card Info");
     }
   };
 
@@ -65,7 +68,6 @@ const AddCreditCardScreen = () => {
 
     saved_cards.forEach((card) => {
       if (card.number === accountNumber) {
-        console.log(card.number, accountNumber);
         isDuplicate = true;
       }
     });

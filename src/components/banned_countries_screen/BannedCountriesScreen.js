@@ -69,7 +69,6 @@ const BannedCountriesScreen = () => {
   };
 
   const addToBanned = () => {
-    console.log("banned hit");
     if (suggestionState.userInput.length > 0) {
       let isValidCountry = false;
       let indexOfSelectedCountry = null;
