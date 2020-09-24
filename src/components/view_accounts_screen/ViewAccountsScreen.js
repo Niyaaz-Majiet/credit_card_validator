@@ -24,17 +24,18 @@ const ViewAccountsScreen = () => {
           <h1>Saved Accounts</h1>
           {savedAccounts.map((accountData, index) => {
             return (
-              <div className="account_item_col">
-                <div
-                  className="account_items"
-                  key={index}
-                  onClick={() => removeItem(accountData.number)}
-                >
+              <div key={index} className="account_item_col">
+                <div className="account_items">
                   <h5 id="account_number">
                     Account Number : {accountData.number}
                   </h5>
                   <br />
-                  <h5 id="alpha">{accountData.alpha2}</h5>
+                  <button
+                    id="alpha"
+                    onClick={() => removeItem(accountData.number)}
+                  >
+                    X
+                  </button>
                 </div>
               </div>
             );

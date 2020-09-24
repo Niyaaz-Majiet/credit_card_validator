@@ -3,6 +3,7 @@ import "./AddCreditCardScreen.css";
 import {
   validateAccountAndReturnData,
   retrieveAccountAndCardInfo,
+  checkIfAccountExists,
 } from "./../../Utility";
 
 const AddCreditCardScreen = () => {
@@ -58,21 +59,7 @@ const AddCreditCardScreen = () => {
     sessionStorage.setItem("saved_accounts", JSON.stringify(savedAccounts));
 
     alert("Account Successfully Added");
-  };
-
-  const checkIfAccountExists = (accountNumber) => {
-    let isDuplicate = false;
-
-    let saved_cards =
-      JSON.parse(sessionStorage.getItem("saved_accounts")) || [];
-
-    saved_cards.forEach((card) => {
-      if (card.number === accountNumber) {
-        isDuplicate = true;
-      }
-    });
-
-    return isDuplicate;
+    updateAccontNumber("");
   };
 
   const checkIfSelectedBanned = (alpha2) => {

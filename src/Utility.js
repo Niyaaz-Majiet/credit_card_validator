@@ -1,5 +1,4 @@
 var valid = require("card-validator");
-var lookup = require("binlookup")();
 
 export const proccessRawCountriesArray = (rawCountriesArray) => {
   let proccesedArray = [];
@@ -21,16 +20,62 @@ export const validateAccountAndReturnData = (creditCardNumber) => {
   };
 };
 
+export const checkIfAccountExists = (accountNumber) => {
+  let isDuplicate = false;
+
+  let saved_cards = JSON.parse(sessionStorage.getItem("saved_accounts")) || [];
+
+  saved_cards.forEach((card) => {
+    if (card.number === accountNumber) {
+      isDuplicate = true;
+    }
+  });
+
+  return isDuplicate;
+};
+
 export const retrieveAccountAndCardInfo = (creditCardNumber) => {
   return new Promise((resolve) => {
-    lookup(creditCardNumber.substring(0, 8), (err, data) => {
-      if (err) {
-        resolve(null);
+    fetch(
+      `http://localhost:3002/api/binlist-details/${creditCardNumber.substring(
+        0,
+        8
+      )}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+        },
       }
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((error) => {
+        resolve(null);
+      });
+  });
+};
 
-      resolve(data);
-    });
-
-    lookup(creditCardNumber);
+export const getCountries = () => {
+  return new Promise((resolve) => {
+    fetch("https://restcountries.eu/rest/v2/all", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((error) => {
+        resolve(null);
+      });
   });
 };

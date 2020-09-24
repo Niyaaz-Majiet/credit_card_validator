@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AutoCompleteWidget from "../auto_complete_widget/AutoCompleteWidget";
-import { proccessRawCountriesArray } from "./../../Utility";
+import { proccessRawCountriesArray, getCountries } from "./../../Utility";
 import "./BannedCountriesScreen.css";
 
 const BannedCountriesScreen = () => {
@@ -43,22 +43,12 @@ const BannedCountriesScreen = () => {
   }, [bannedCountries]);
 
   useEffect(() => {
-    fetch("https://restcountries.eu/rest/v2/all", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let proccessedData = proccessRawCountriesArray(data);
+    getCountries().then((result) => {
+      if (result) {
+        let proccessedData = proccessRawCountriesArray(result);
         updateCountries(proccessedData);
-      })
-      .catch((error) => {
-        return error;
-      });
+      }
+    });
   }, []);
 
   const removeItem = (country) => {
@@ -72,10 +62,10 @@ const BannedCountriesScreen = () => {
     if (suggestionState.userInput.length > 0) {
       let isValidCountry = false;
       let indexOfSelectedCountry = null;
-
+      let currentUserInput = suggestionState.userInput.toLowerCase().trim();
       for (let i = 0; i < countries.length; i++) {
         let currentCompany = countries[i].name.toLowerCase();
-        let currentUserInput = suggestionState.userInput.toLowerCase().trim();
+
         if (currentCompany === currentUserInput) {
           isValidCountry = true;
           indexOfSelectedCountry = i;
@@ -84,10 +74,14 @@ const BannedCountriesScreen = () => {
       }
 
       if (isValidCountry) {
-        updateBannedCountries([
-          ...bannedCountries,
-          countries[indexOfSelectedCountry],
-        ]);
+        if (bannedCountries.includes(countries[indexOfSelectedCountry])) {
+          alert("Country Already Banned");
+        } else {
+          updateBannedCountries([
+            ...bannedCountries,
+            countries[indexOfSelectedCountry],
+          ]);
+        }
       } else {
         alert("Country Not Found ...");
       }
@@ -115,15 +109,20 @@ const BannedCountriesScreen = () => {
         <div id="list_wrapper">
           {bannedCountries.map((country, index) => {
             return (
-              <span key={index} onClick={() => removeItem(country.name)}>
+              <div key={index}>
                 {country.name}
-              </span>
+                <button id="alpha" onClick={() => removeItem(country.name)}>
+                  X
+                </button>
+              </div>
             );
           })}
         </div>
       ) : (
         <div id="no_banned_accounts_display">
-          <h1>No countries have been banned</h1>
+          <h1 id="no_banned_accounts_display_message">
+            No countries have been banned
+          </h1>
         </div>
       )}
     </div>
