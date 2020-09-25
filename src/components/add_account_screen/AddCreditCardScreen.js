@@ -15,6 +15,7 @@ const AddCreditCardScreen = () => {
   const onClick = async () => {
     let isValidData = validateAccountAndReturnData(accountNumber);
     let retrivedCardInfo = await retrieveAccountAndCardInfo(accountNumber);
+    console.log("retrived", retrivedCardInfo);
     if (retrivedCardInfo) {
       if (accountNumber.length < 13) {
         alert("Invalid Credit Card Number");
@@ -67,7 +68,7 @@ const AddCreditCardScreen = () => {
   const checkIfSelectedBanned = (alpha2) => {
     let isSelectedBanned = false;
     let bannedCountries = getBannedCountries();
-    if (bannedCountries) {
+    if (bannedCountries.length > 0) {
       bannedCountries.forEach((country) => {
         if (country.alpha2Code === alpha2) {
           isSelectedBanned = true;

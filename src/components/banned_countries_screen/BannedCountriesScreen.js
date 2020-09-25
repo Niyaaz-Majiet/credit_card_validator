@@ -116,7 +116,7 @@ const BannedCountriesScreen = () => {
             return (
               <div key={index}>
                 {country.name}
-                <button id="alpha" onClick={() => removeItem(country.name)}>
+                <button id="btnRemove" onClick={() => removeItem(country.name)}>
                   X
                 </button>
               </div>

@@ -16,35 +16,33 @@ const ViewAccountsScreen = () => {
     updateSavedAccounts(newArray);
   };
 
-  return (
-    <div className="account_container">
-      {savedAccounts && savedAccounts.length > 0 ? (
-        <div>
-          <h1>SAVED ACCOUNTS</h1>
-          {savedAccounts.map((accountData, index) => {
-            return (
-              <div key={index} className="account_item_col">
-                <div className="account_items">
-                  <h5 id="account_number">
-                    Account Number : {accountData.number}
-                  </h5>
-                  <br />
-                  <button
-                    id="btnRemove"
-                    onClick={() => removeItem(accountData.number)}
-                  >
-                    X
-                  </button>
-                </div>
+  if (savedAccounts && savedAccounts.length > 0) {
+    return (
+      <div className="account_container">
+        <h1>SAVED ACCOUNTS</h1>
+        {savedAccounts.map((accountData, index) => {
+          return (
+            <div key={index} className="account_item_col">
+              <div className="account_items">
+                <h5 id="account_number">
+                  Account Number : {accountData.number}
+                </h5>
+                <br />
+                <button
+                  id="btnRemove"
+                  onClick={() => removeItem(accountData.number)}
+                >
+                  X
+                </button>
               </div>
-            );
-          })}
-        </div>
-      ) : (
-        <div>No Saved Accounts</div>
-      )}
-    </div>
-  );
+            </div>
+          );
+        })}
+      </div>
+    );
+  } else {
+    return <div>No Saved Accounts</div>;
+  }
 };
 
 export default ViewAccountsScreen;
