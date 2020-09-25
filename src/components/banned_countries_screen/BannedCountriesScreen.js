@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import AutoCompleteWidget from "../auto_complete_widget/AutoCompleteWidget";
-import { proccessRawCountriesArray, getCountries } from "./../../Utility";
+import {
+  proccessRawCountriesArray,
+  getCountries,
+  getBannedCountries,
+  setBannedCountries,
+} from "./../../Utility";
 import "./BannedCountriesScreen.css";
 
 const BannedCountriesScreen = () => {
   const [countries, updateCountries] = useState([]);
   const [bannedCountries, updateBannedCountries] = useState(
-    JSON.parse(sessionStorage.getItem("banned_countries")) || []
+    getBannedCountries()
   );
   const [suggestionState, updateSuggestionState] = useState({
     filteredSuggestions: [],
@@ -39,7 +44,7 @@ const BannedCountriesScreen = () => {
   };
 
   useEffect(() => {
-    sessionStorage.setItem("banned_countries", JSON.stringify(bannedCountries));
+    setBannedCountries(bannedCountries);
   }, [bannedCountries]);
 
   useEffect(() => {

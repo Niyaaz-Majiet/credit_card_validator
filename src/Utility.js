@@ -13,6 +13,22 @@ export const proccessRawCountriesArray = (rawCountriesArray) => {
   return proccesedArray;
 };
 
+export const getBannedCountries = () => {
+  return JSON.parse(sessionStorage.getItem("banned_countries")) || [];
+};
+
+export const setBannedCountries = (bannedCountries) => {
+  sessionStorage.setItem("banned_countries", JSON.stringify(bannedCountries));
+};
+
+export const getSavedAccounts = () => {
+  return JSON.parse(sessionStorage.getItem("saved_accounts")) || [];
+};
+
+export const setSavedAccounts = (savedAccounts) => {
+  sessionStorage.setItem("saved_accounts", JSON.stringify(savedAccounts));
+};
+
 export const validateAccountAndReturnData = (creditCardNumber) => {
   let checkCardDetails = valid.number(creditCardNumber);
   return {

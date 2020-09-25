@@ -4,6 +4,9 @@ import {
   validateAccountAndReturnData,
   retrieveAccountAndCardInfo,
   checkIfAccountExists,
+  getBannedCountries,
+  getSavedAccounts,
+  setSavedAccounts,
 } from "./../../Utility";
 
 const AddCreditCardScreen = () => {
@@ -51,12 +54,11 @@ const AddCreditCardScreen = () => {
       number: accountNumber,
     };
 
-    let savedAccounts =
-      JSON.parse(sessionStorage.getItem("saved_accounts")) || [];
+    let savedAccounts = getSavedAccounts();
 
     savedAccounts.push(cardInfo);
 
-    sessionStorage.setItem("saved_accounts", JSON.stringify(savedAccounts));
+    setSavedAccounts(savedAccounts);
 
     alert("Account Successfully Added");
     updateAccontNumber("");
@@ -64,8 +66,7 @@ const AddCreditCardScreen = () => {
 
   const checkIfSelectedBanned = (alpha2) => {
     let isSelectedBanned = false;
-    let bannedCountries =
-      JSON.parse(sessionStorage.getItem("banned_countries")) || [];
+    let bannedCountries = getBannedCountries();
     if (bannedCountries) {
       bannedCountries.forEach((country) => {
         if (country.alpha2Code === alpha2) {

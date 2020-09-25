@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { getSavedAccounts, setSavedAccounts } from "../../Utility";
 import "./ViewAccountsScreen.css";
 
 const ViewAccountsScreen = () => {
-  const [savedAccounts, updateSavedAccounts] = useState(
-    JSON.parse(sessionStorage.getItem("saved_accounts")) || []
-  );
+  const [savedAccounts, updateSavedAccounts] = useState(getSavedAccounts());
 
   useEffect(() => {
-    sessionStorage.setItem("saved_accounts", JSON.stringify(savedAccounts));
+    setSavedAccounts(savedAccounts);
   }, [savedAccounts]);
 
   const removeItem = (accountNumber) => {
