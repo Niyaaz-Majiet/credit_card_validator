@@ -20,7 +20,7 @@ const ViewAccountsScreen = () => {
     <div className="account_container">
       {savedAccounts && savedAccounts.length > 0 ? (
         <div>
-          <h1>Saved Accounts</h1>
+          <h1>SAVED ACCOUNTS</h1>
           {savedAccounts.map((accountData, index) => {
             return (
               <div key={index} className="account_item_col">
@@ -30,7 +30,7 @@ const ViewAccountsScreen = () => {
                   </h5>
                   <br />
                   <button
-                    id="alpha"
+                    id="btnRemove"
                     onClick={() => removeItem(accountData.number)}
                   >
                     X

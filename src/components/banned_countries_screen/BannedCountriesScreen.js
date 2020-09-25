@@ -99,7 +99,7 @@ const BannedCountriesScreen = () => {
 
   return (
     <div id="container">
-      <h1>Banned Accounts</h1>
+      <h1>BANNED COUNTRIES</h1>
       <div id="banned_form" className="column">
         <AutoCompleteWidget
           suggestions={countries}

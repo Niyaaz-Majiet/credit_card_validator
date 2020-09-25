@@ -32,6 +32,7 @@ const AddCreditCardScreen = () => {
               alert("Card Belongs To a Banned Country");
             } else {
               addCreditCard(retrivedCardInfo);
+              updateAccontNumber("");
             }
           }
         } else {
@@ -61,7 +62,6 @@ const AddCreditCardScreen = () => {
     setSavedAccounts(savedAccounts);
 
     alert("Account Successfully Added");
-    updateAccontNumber("");
   };
 
   const checkIfSelectedBanned = (alpha2) => {
@@ -80,11 +80,12 @@ const AddCreditCardScreen = () => {
 
   return (
     <div id="container">
-      <h1>Add Credit Card Number</h1>
+      <h1>ADD CREDIT CARD NUMBER</h1>
       <div id="input_form" className="column">
         <input
           placeholder="Enter credit card number..."
           onChange={($event) => onChange($event)}
+          value={accountNumber}
         />
         <button onClick={() => onClick()}>ADD</button>
       </div>
