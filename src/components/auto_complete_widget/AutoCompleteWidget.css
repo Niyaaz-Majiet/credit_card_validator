@@ -31,7 +31,7 @@ input:focus {
   margin-top: 3px;
 }
 
-@media only screen and (max-width: 373px) {
+@media only screen and (max-width: 455px) {
   #suggestions {
     top: 184px;
   }
